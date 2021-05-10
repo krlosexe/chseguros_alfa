@@ -1,0 +1,6 @@
+module Pods_chseguros {
+  umbrella header "Pods-chseguros-umbrella.h"
+
+  export *
+  module * { export * }
+}

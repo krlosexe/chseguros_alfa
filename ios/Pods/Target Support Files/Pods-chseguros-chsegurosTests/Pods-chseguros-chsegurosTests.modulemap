@@ -1,0 +1,6 @@
+module Pods_chseguros_chsegurosTests {
+  umbrella header "Pods-chseguros-chsegurosTests-umbrella.h"
+
+  export *
+  module * { export * }
+}

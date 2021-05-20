@@ -53,7 +53,10 @@ class Shop extends React.Component {
       <View style={styles.container}>  
        <StatusBar backgroundColor="#fff"
       barStyle="dark-content"/> 
-        <View style={ styles.headerWrapper }>
+
+
+
+        <View style={styles.headerWrapper}>
           <View style={styles.navigation}>
            <LottieView
                   source={require('./../assets/Img/campana.json')}
@@ -76,14 +79,23 @@ class Shop extends React.Component {
             </TouchableOpacity>
             </View>
           </View>
-          <View style={ styles.greatingWrapperPolizas }>
+
+
+
+
+          <View style={styles.greatingWrapperPolizas}>
             <Text style={ styles.dayWrapper }>Compra en linea</Text>
             <Text style={ styles.dateWrapper }>Elige el seguro que necesitas</Text>
           </View>
-          <View style={ styles.menuWrapperPoliza }>
+
+
+          <View style={styles.menuWrapperPoliza}>
           </View>
         </View>
-      <ScrollView style={styles.scrollView}>
+
+
+
+      <ScrollView style={[styles.scrollView,{ marginTop:-20}]}>
       <Text style={{fontSize:20, marginTop:5, fontWeight:'600', color:'#14132A', marginLeft:20}}>Movilidad</Text>
        <View style={{flexDirection: 'row',  width:'100%', marginLeft:10}}>
        <ScrollView style={styles.scrollView2} horizontal={true} showsHorizontalScrollIndicator={false}>
@@ -147,7 +159,11 @@ class Shop extends React.Component {
           </View>
         </TouchableOpacity>
         </ScrollView>   
-       </View>      
+       </View>     
+
+
+       <View style={{height:20,}}></View>
+
     </ScrollView> 
      <View style={styles.bottomNavigation}>
      <TouchableOpacity onPress={() => {navigate('HomeScreen')}}>

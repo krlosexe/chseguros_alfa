@@ -12,7 +12,12 @@ export default async function RequestPermission() {
 			PermissionsAndroid.PERMISSIONS.RECORD_AUDIO,
 			PermissionsAndroid.PERMISSIONS.READ_EXTERNAL_STORAGE,
 			PermissionsAndroid.PERMISSIONS.WRITE_EXTERNAL_STORAGE,
+			PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION,
 			
+
+
+			
+
 		]);
 		if (
 			granted["android.permission.RECORD_AUDIO"] ===
@@ -25,6 +30,9 @@ export default async function RequestPermission() {
 			PermissionsAndroid.RESULTS.GRANTED
 			&&
 			granted["android.permission.WRITE_EXTERNAL_STORAGE"] ===
+			PermissionsAndroid.RESULTS.GRANTED
+			&&
+			granted["android.permission.ACCESS_FINE_LOCATION"] ===
 			PermissionsAndroid.RESULTS.GRANTED
 
 		) {

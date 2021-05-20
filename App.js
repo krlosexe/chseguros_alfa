@@ -29,6 +29,13 @@ import Arrendamiento from './screens/Arrendamiento.js';
 import Siniestros from './screens/Siniestros.js';
 import ReportSinister from './screens/ReportSinister';
 
+import MiPropiedad from './screens/MiPropiedad';
+import MiEmpresa from './screens/MiEmpresa';
+import HospitalList from './screens/HospitalList';
+import AccidentePerson from './screens/AccidentePerson';
+import TypeAccident from './screens/TypeAccident';
+import HospitalView from './screens/HospitalView';
+
 const Stack = createStackNavigator();
 console.disableYellowBox = true;
 
@@ -57,8 +64,15 @@ function App() {
           <Stack.Screen headerMode={'none'} name="Arrendamiento" component={ Arrendamiento } />
           <Stack.Screen headerMode={'none'} name="AgendarExplorer" component={ AgendarExplorer } />
           <Stack.Screen headerMode={'none'} name="PagarExplorer" component={ PagarExplorer } />
+          <Stack.Screen headerMode={'none'} name="HospitalList" component={ HospitalList } />
 
-                
+          <Stack.Screen headerMode={'none'} name="MiPropiedad" component={ MiPropiedad } />
+
+          <Stack.Screen headerMode={'none'} name="MiEmpresa" component={ MiEmpresa } />
+          <Stack.Screen headerMode={'none'} name="AccidentePerson" component={ AccidentePerson } />
+
+          <Stack.Screen headerMode={'none'} name="TypeAccident" component={ TypeAccident } />
+          <Stack.Screen headerMode={'none'} name="HospitalView" component={ HospitalView } />
         </Stack.Navigator>
       </NavigationContainer>
   );

@@ -125,9 +125,8 @@ class HomeScreen extends React.Component {
                 />
 
              <View>
-              <Image source={require('./../assets/logo-dark.png')} style={styles.logod} />
-              <Image style={styles.tinyLogo} source={{ uri: 'https://reactnative.dev/img/tiny_logo.png', }}
-      />
+             <Image source={require('./../assets/logo-dark.png')} style={styles.logod} />
+          {/*    <Image style={styles.tinyLogo} source={{ uri: 'https://reactnative.dev/img/tiny_logo.png', }}/>*/}
             </View>
             <View>
             <TouchableOpacity onPress={() => {navigate('Profile')}}>
@@ -138,10 +137,12 @@ class HomeScreen extends React.Component {
               {this.state.foto != null &&
                <Image style={{...styles.avatar, borderRadius : 20}} source={{ uri: `https://app.chseguros.com.co/img/usuarios/profile/${this.state.foto}`}} />
              }
-              
             </TouchableOpacity>
             </View>
           </View>
+
+
+          
           <View style={ styles.greatingWrapper }>
             <Text style={ styles.dayWrapper2 }>Hola, {this.state.ncompleto} </Text>
             <Text style={ styles.nameWrapper }>Aprovecha los beneficios de ser nuestro cliente</Text>

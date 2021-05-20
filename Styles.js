@@ -598,8 +598,9 @@ const styles = StyleSheet.create({
       marginTop:-30,
       marginLeft: '90%',  
       backgroundColor: '#5680ff',
-      borderBottomLeftRadius: 15,
-      borderBottomRightRadius: 15,
+      borderRadius:15
+    //  borderBottomLeftRadius: 15,
+     // borderBottomRightRadius: 15,
   },
     scrollView: {
       marginBottom:80,

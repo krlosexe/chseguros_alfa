@@ -63,6 +63,7 @@ class HomeScreen extends React.Component {
     this._retrieveData()
 
   }
+  
     onPress = () => {
     alert ('fawfaw') 
   }

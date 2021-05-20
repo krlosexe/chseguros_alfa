@@ -148,7 +148,7 @@ class Movilidad extends React.Component {
         <StatusBar backgroundColor="#fff"
           barStyle="dark-content" />
         <View style={styles.headerWrapper}>
-          <Header foto={this.setState.foto} return="HomeScreen" props={this.props} />
+          <Header foto={this.state.foto} return="HomeScreen" props={this.props} />
           <View style={styles.greatingWrapperPolizas}>
             <Text style={styles.dayWrapper}>Reporta un Siniestro</Text>
             <Text style={styles.dateWrapper}>¿Con cúal de tus pólizas está asociado?</Text>

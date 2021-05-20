@@ -111,6 +111,16 @@ class Movilidad extends React.Component {
             <CardTriple text="Hebert Norena" ci="1.122.158.399" poliza="123456789" go="TypeAccident" props={this.props} />
           </View>
         </ScrollView>
+
+
+<TouchableOpacity style={{backgroundColor:"#849DF7"}}>
+
+  <Text>No esta asociado con ninguna</Text>
+  <Icon name="arrow-right" width={30} height={30} fill="#FFF" />
+
+</TouchableOpacity>
+
+
         <Footer />
       </View>
     )

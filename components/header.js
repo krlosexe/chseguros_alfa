@@ -2,6 +2,12 @@ import React from 'react';
 import { View, Text, TouchableOpacity,Image } from 'react-native';
 import styles from './../Styles';
 import { Icon } from 'react-native-eva-icons';
+
+
+
+
+
+
 function Header(props) {
 
 

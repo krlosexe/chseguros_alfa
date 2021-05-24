@@ -2,9 +2,6 @@ import * as React from 'react'
 import 'react-native-gesture-handler'
 import { NavigationContainer } from '@react-navigation/native'
 import { createStackNavigator } from '@react-navigation/stack'
-
-
-
 // import Soatc from './screens/Soatc.js';
 // import Request from './screens/Request.js';
 import HomeScreen from './screens/HomeScreen.js';
@@ -28,13 +25,13 @@ import Vida from './screens/Vida.js';
 import Arrendamiento from './screens/Arrendamiento.js';
 import Siniestros from './screens/Siniestros.js';
 import ReportSinister from './screens/ReportSinister';
-
 import MiPropiedad from './screens/MiPropiedad';
 import MiEmpresa from './screens/MiEmpresa';
 import HospitalList from './screens/HospitalList';
 import AccidentePerson from './screens/AccidentePerson';
 import TypeAccident from './screens/TypeAccident';
 import HospitalView from './screens/HospitalView';
+import AddNewPerson from './screens/AddNewPerson';
 
 const Stack = createStackNavigator();
 console.disableYellowBox = true;
@@ -65,14 +62,12 @@ function App() {
           <Stack.Screen headerMode={'none'} name="AgendarExplorer" component={ AgendarExplorer } />
           <Stack.Screen headerMode={'none'} name="PagarExplorer" component={ PagarExplorer } />
           <Stack.Screen headerMode={'none'} name="HospitalList" component={ HospitalList } />
-
           <Stack.Screen headerMode={'none'} name="MiPropiedad" component={ MiPropiedad } />
-
           <Stack.Screen headerMode={'none'} name="MiEmpresa" component={ MiEmpresa } />
           <Stack.Screen headerMode={'none'} name="AccidentePerson" component={ AccidentePerson } />
-
           <Stack.Screen headerMode={'none'} name="TypeAccident" component={ TypeAccident } />
           <Stack.Screen headerMode={'none'} name="HospitalView" component={ HospitalView } />
+          <Stack.Screen headerMode={'none'} name="AddNewPerson" component={ AddNewPerson } />
         </Stack.Navigator>
       </NavigationContainer>
   );

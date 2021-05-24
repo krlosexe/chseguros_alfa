@@ -135,6 +135,25 @@ class Shock extends React.Component {
               </View>
             </View>
           </View>
+
+
+
+          <TouchableOpacity onPress={() => { navigate('ReportSinister', { branch: "AUTOMOBIL", id_client: this.state.client_id }) }}>
+                 <Text>sdsdsd</Text>
+                </TouchableOpacity>
+
+
+
+
+
+
+
+
+
+
+
+
+
           <ScrollView style={styles.scrollView1}>
             {this.state.data.length > 0 &&
               this.state.data.map((item, key) => {

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { View, Text, Linking,SafeAreaView, Image, ScrollView, Button, TouchableOpacity, StatusBar } from "react-native";
+import { View, Text, Linking, SafeAreaView, Image, ScrollView, Button, TouchableOpacity, StatusBar } from "react-native";
 import styles from './../Styles'
 import { Icon } from 'react-native-eva-icons';
 import AsyncStorage from '@react-native-community/async-storage'
@@ -79,12 +79,9 @@ function HospitalesList(props) {
         barStyle="dark-content" />
       <ScrollView>
         <View style={styles.headerWrapper}>
-
-
           <Header
             //foto={foto}
             return="Siniestros" props={props} />
-
           <View style={styles.greatingWrapper}>
             <Text style={styles.dayWrapper2}>{props.route.params.data.name}</Text>
             <Text style={styles.nameWrapper}>{props.route.params.data.address}</Text>
@@ -94,58 +91,27 @@ function HospitalesList(props) {
           backgroundColor: "white",
           height: 20, width: "100%", marginTop: -30, borderBottomLeftRadius: 40, borderBottomRightRadius: 40
         }}></View>
-
         <View style={{ alignItems: "center", alignContent: "center" }}>
-
-
-
-
-
-
           <View style={{ overflow: "hidden", marginTop: 40, borderRadius: 15, alignItems: "center", alignContent: "center", width: "90%", backgroundColor: "white" }}>
-
-
-          <View style={{ flexDirection: "row", marginLeft:20,marginTop:10, alignItems: "flex-start", width: "100%" }}>
-            <View style={{ flexDirection: "column", marginLeft:20,marginTop:10, alignItems: "flex-start", width: "80%" }}>
-              <Text style={{ textAlign: "left", fontSize: 14, color: "#000", fontWeight: "bold" }}>Teléfono:</Text>
-              <Text style={{ textAlign: "left", color: "#787878", fontSize: 10 }}>{props.route.params.data.phone}</Text>
-        
+            <View style={{ flexDirection: "row", marginLeft: 0, marginTop: 10, alignItems: "flex-start", width: "100%" }}>
+              <View style={{ flexDirection: "column", marginLeft: 20, marginTop: 10, alignItems: "flex-start", width: "80%" }}>
+                <Text style={{ textAlign: "left", fontSize: 14, color: "#000", fontWeight: "bold" }}>Teléfono:</Text>
+                <Text style={{ textAlign: "left", color: "#787878", fontSize: 10 }}>{props.route.params.data.phone}</Text>
+              </View>
+              <TouchableOpacity style={styles.fallow} onPress={() => followCall()} >
+                <Icon name='phone-call-outline' width={25} height={25} fill="#5681FF" />
+              </TouchableOpacity>
             </View>
-
-
-            <TouchableOpacity style={styles.fallow} onPress={() => followCall()} >
-          <Icon name='phone-call-outline' width={25} height={25} fill="#5681FF" />
-        </TouchableOpacity>
-        </View>
-
-        
-            <View style={{ flexDirection: "column", marginLeft:20,marginTop:10, marginBottom:15,alignItems: "flex-start", width: "100%" }}>
+            <View style={{ flexDirection: "column", marginLeft: 40, marginTop: 10, marginBottom: 15, alignItems: "flex-start", width: "100%" }}>
               <Text style={{ textAlign: "left", fontSize: 14, color: "#000", fontWeight: "bold" }}>Paso a seguir:</Text>
               <Text style={{ textAlign: "left", color: "#787878", fontSize: 10 }}>1 - Dirijase al centro</Text>
               <Text style={{ textAlign: "left", color: "#787878", fontSize: 10 }}>2 - Llevar el carnet y documento de la empresa</Text>
             </View>
-
-
-<TouchableOpacity style={{backgroundColor:"#5681FF", width:"100%", height:36}}>
-  <Text style={{lineHeight:36, textAlign: "center", fontSize: 14, color: "#fff", fontWeight: "bold"}}>Descargar Orden</Text>
-</TouchableOpacity>
-
-
-
+            <TouchableOpacity style={{ backgroundColor: "#5681FF", width: "100%", height: 36 }}>
+              <Text style={{ lineHeight: 36, textAlign: "center", fontSize: 14, color: "#fff", fontWeight: "bold" }}>Descargar Orden</Text>
+            </TouchableOpacity>
           </View>
-
-
-
-
         </View>
-
-
-
-
-
-
-
-
         <View style={{ height: 100 }}></View>
       </ScrollView>
       <Footer />

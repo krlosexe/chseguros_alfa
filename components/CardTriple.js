@@ -6,13 +6,14 @@ import { Icon } from 'react-native-eva-icons';
 
 function CardSimple(props) {
   const { navigation } = props.props
-  function goToScreen(screen) {
-    navigation.navigate(screen, { randomCode: Math.random() })
+  function goToScreen(screen,data) {
+    let back=props.back
+    navigation.navigate(screen, { randomCode: Math.random(), data, back})
   }
 
 
   return (
-    <TouchableOpacity style={styles.btn} onPress={()=>goToScreen(props.go)}>
+    <TouchableOpacity style={styles.btn} onPress={()=>goToScreen(props.go, props.data)}>
 
     <View style={{   width: "90%", left:10}}>
       <Text style={styles.text}>{props.text}</Text>

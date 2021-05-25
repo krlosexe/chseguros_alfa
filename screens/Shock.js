@@ -139,7 +139,7 @@ class Shock extends React.Component {
 
 
           <TouchableOpacity onPress={() => { navigate('ReportSinister', { branch: "AUTOMOBIL", id_client: this.state.client_id }) }}>
-                 <Text>sdsdsd</Text>
+                 <Text></Text>
                 </TouchableOpacity>
 
 

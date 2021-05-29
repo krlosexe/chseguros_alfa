@@ -5,12 +5,9 @@ import { Icon } from 'react-native-eva-icons';
 import AsyncStorage from '@react-native-community/async-storage'
 import Geolocation from '@react-native-community/geolocation';
 import axios from 'axios';
-
 import Header from '../components/header.js';
 import Footer from '../components/footer.js';
 import BotonDouble from '../components/BotonDouble.js';
-
-
 
 function HospitalesList(props) {
   const [location, setlocation] = useState(null);
@@ -19,25 +16,29 @@ function HospitalesList(props) {
   const [HospilaesList, setHospilaesList] = useState([]);
   const [Filter, setFilter] = useState(1);
 
-
-
-
-
   let randomCode
   if (props.route.params) { randomCode = props.route.params.randomCode }
   else { randomCode = 1 }
+
+
   useEffect(() => {
     Geolocation.getCurrentPosition(info => setlocation(info));
     getHospitales();
+    sendData(props.route.params.send);
   }, [randomCode]);
+
+
+
   useEffect(() => {
-    console.log("effect: ", location)
+    console.log("effect:  location")
     if (location === null) { console.log("not coords get") }
     else {
       setLatitude(location.coords.latitude)
       setLongitude(location.coords.longitude)
     }
   }, [location]);
+
+
 
 
   async function getHospitales() {
@@ -49,6 +50,8 @@ function HospitalesList(props) {
       .catch(function (error) { console.log(error) })
       .then(function () { });
   }
+
+
 
 
 
@@ -65,13 +68,24 @@ function HospitalesList(props) {
 
 
 
-
-  console.log("?", props)
-
   const followCall = async () => {
     console.log("calling")
     await Linking.openURL(`tel: ${props.route.params.data.phone}`)
   }
+
+
+
+  function sendData(data) {
+    console.log("axios",data)
+    axios.post('https://app.chseguros.com.co/api/saveNewReporte', data).then(res => {
+      console.log("?????????????????????????",res.data);
+    }).catch(error => {
+      console.log("_______________________________________error", error)
+    })
+  }
+
+
+
 
   return (
     <View style={styles.container}>

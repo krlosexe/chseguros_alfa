@@ -13,11 +13,12 @@ import _ from 'lodash';
 
 
 function HospitalesList(props) {
-  const { navigation } = props;
+  const { navigation } = props
   const [location, setlocation] = useState(null);
   const [Latitude, setLatitude] = useState(0);
   const [Longitude, setLongitude] = useState(0);
   const [Load, setLoad] = useState(true);
+
 
 
 
@@ -26,10 +27,7 @@ function HospitalesList(props) {
   const [HospitalesOrderDistance, setHospitalesOrderDistance] = useState(null);
   const [HospitalesPrint, setHospitalesPrint] = useState(null);
   const [Filter, setFilter] = useState(1);
-
-
-
-
+  const [data, setdata] = useState(null)
 
 
   let randomCode
@@ -37,9 +35,11 @@ function HospitalesList(props) {
   else { randomCode = 1 }
 
 
+
   useEffect(() => {
     Geolocation.getCurrentPosition(info => setlocation(info));
     getHospitales();
+    setdata(props.route.params.data)
   }, [randomCode]);
 
 
@@ -68,24 +68,35 @@ function HospitalesList(props) {
   useEffect(() => {
     if (HospitalesList !== null) {
       setHospitalesPrint(HospitalesList);
-      setHospitalesOrderDistance(_.orderBy(HospitalesList, ['distance'], ['asc']));
-      setHospitalesOrderName(_.orderBy(HospitalesList, ['name'], ['asc']));
+      setHospitalesOrderDistance(_.orderBy(HospitalesList, ['distance'], ['ASC']));
+      setHospitalesOrderName(_.orderBy(HospitalesList, ['name'], ['ASC']));
       setLoad(false);
     }
 
   }, [HospitalesList])
 
   function getFilter(e) {
-    setFilter(e);  
+    setFilter(e);
     setLoad(true);
     if (Filter === 1) { setHospitalesPrint(HospitalesOrderDistance); }
     if (Filter === 2) { setHospitalesPrint(HospitalesOrderName); }
     setLoad(false);
   }
 
-  function goToScreen(screen, data) {
-    navigation.navigate(screen, { randomCode: Math.random(), data })
+  function goToScreen(data,send) {
+    let screen = "HospitalView";
+    let back = "HospitalList";
+    navigation.navigate(screen, { randomCode: Math.random(), data, back,send })
   }
+
+
+  function getHospital(i) {
+    let hospital = i.id;
+    data.hospital_id = hospital;
+    console.log("ultima data: ", data);
+    goToScreen(i,data)
+  }
+
 
   return (
     <View style={styles.container}>
@@ -97,8 +108,8 @@ function HospitalesList(props) {
             //foto={foto}
             return="Siniestros" props={props} />
           <View style={styles.greatingWrapper}>
-{!Load && HospitalesPrint !== null &&
-            <Text style={styles.dayWrapper2}>Centros de atención ({HospitalesPrint.length})</Text>}
+            {!Load && HospitalesPrint !== null &&
+              <Text style={styles.dayWrapper2}>Centros de atención ({HospitalesPrint.length})</Text>}
 
             <Text style={styles.nameWrapper}>Elige un centro de atención medico cercano</Text>
           </View>
@@ -120,7 +131,7 @@ function HospitalesList(props) {
             HospitalesPrint !== null && !Load &&
             HospitalesPrint.map((i, key) => {
               return (
-                <TouchableOpacity key={key} onPress={() => goToScreen('HospitalView', i)}
+                <TouchableOpacity key={key} onPress={() => getHospital(i)}
                   //onPress={() => { navigate() }}
                   style={{ marginBottom: 15, paddingVertical: 10, paddingHorizontal: 20, flexDirection: "row", backgroundColor: "white", width: "90%", borderRadius: 15 }}>
                   <View style={{ flexDirection: "column" }}>

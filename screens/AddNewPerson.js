@@ -25,6 +25,17 @@ function Movilidad(props) {
   const [selectedValue, setSelectedValue] = useState("cedula");
   const [FormTexto, setFormTexto] = useState({ 'nombre': "Juan camilo mendoza", 'documentoType': 'pasaporte', 'documentoNro': '18868371', 'lugar': '' })
 
+console.log("props new", props)
+
+
+
+
+
+
+
+
+
+
   function onChangeText(text, key) {
     setFormTexto({
       ...FormTexto,
@@ -37,9 +48,12 @@ function Movilidad(props) {
     _retrieveData();
   }, [])
 
-  function goToScreen(screen) {
+
+  function goToScreen() {
+    let screen = 'TypeAccident';
     let back = "AddNewPerson";
-    navigation.navigate(screen, { randomCode: Math.random(), back })
+    let dataNew = FormTexto
+    navigation.navigate(screen, { randomCode: Math.random(), back, dataNew })
   }
 
   async function _retrieveData() {
@@ -104,7 +118,7 @@ function Movilidad(props) {
 
         <View style={{height:30}}></View>
       </ScrollView>
-      <TouchableOpacity onPress={() => goToScreen('TypeAccident')}
+      <TouchableOpacity onPress={() => goToScreen()}
         style={{ paddingTop: 10, backgroundColor: "#5681FF", justifyContent: "space-between", flexDirection: "row", height: 40, paddingHorizontal: 20 }}>
         <Text style={{ fontSize: 14, fontWeight: "bold", color: "white", textAlign: "center" }}>Siguiente</Text>
         <Icon name="arrow-right" width={30} height={30} fill="#FFF" top={-5} />

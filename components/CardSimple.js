@@ -6,6 +6,8 @@ import { Icon } from 'react-native-eva-icons';
 
 function CardSimple(props) {
   const { navigation } = props.props
+
+  
   function goToScreen(screen) {
     navigation.navigate(screen, { randomCode: Math.random() })
   }

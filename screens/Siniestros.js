@@ -7,38 +7,23 @@ import {
   ScrollView,
   TouchableOpacity,
   StatusBar
-
 } from "react-native";
-// import * as Font from 'expo-font';
-// import BurgerMenu from './../src/components/BurgerMenu'
 import styles from './../Styles'
 import { Icon } from 'react-native-eva-icons';
 import axios from 'axios';
 import Header from '../components/header.js';
 import Footer from '../components/footer.js';
 import CardSimple from '../components/CardSimple.js';
-
-
-
-
 import { WebView } from 'react-native-webview';
-// import LottieView from 'lottie-react-native';
-// import * as WebBrowser from 'expo-web-browser';
 import AsyncStorage from '@react-native-community/async-storage'
-
-
 
 class Movilidad extends React.Component {
   static navigationOptions = {
     title: '',
     headerShown: false,
-
   };
-
   constructor(props) {
     super(props)
-
-
     this.state = {
       foto: '',
       fontsLoaded: false,
@@ -49,22 +34,13 @@ class Movilidad extends React.Component {
       ncompleto: '',
       documento: '',
     }
-
     this._retrieveData = this._retrieveData.bind(this)
-
   }
-
-
-
-
-
 
   componentDidMount() {
     this._loadAssetAsync()
     this._retrieveData()
     this.onPressPoliza()
-
-    // console.warn("CLientID", this.state.client_id)
   }
 
 
@@ -75,7 +51,6 @@ class Movilidad extends React.Component {
       const user_id = await AsyncStorage.getItem('user_id');
       const documento = await AsyncStorage.getItem('documento');
       const foto = await AsyncStorage.getItem('foto');
-
       if (ncompleto !== null) {
         //console.warn(ncompleto);
         this.setState({ ncompleto: ncompleto })
@@ -83,48 +58,28 @@ class Movilidad extends React.Component {
         this.setState({ user_id: user_id })
         this.setState({ documento: documento })
         this.setState({ foto: foto })
-
       }
-
     } catch (error) {
-      // Error retrieving data
+    // Error retrieving data
     }
   }
-
-
-
-
-
 
   async _loadAssetAsync() {
     await Font.loadAsync({
       'poppins-regular': require('./../assets/Fonts/Poppins-Regular.ttf'),
       'poppins-semibold': require('./../assets/Fonts/Poppins-SemiBold.ttf'),
     })
-
     this.setState({ fontsLoaded: true })
-
   }
 
-
-
-
-
-
-
-
-
-
-
   onPressPoliza() {
-    // console.warn("Ejecuntando query")
     console.log("CLientID22222", this.props.route.params.data_user.documento)
     axios.get('https://app.chseguros.com.co/api/clients/policies/' + this.props.route.params.data_user.documento)
       .then(res => {
         //console.warn(JSON.stringify(res.data))
         console.warn(res.data);
         this.setState({ 'polizas': res.data.policies }),
-          this.setState({ 'bind': res.data.binds })
+        this.setState({ 'bind': res.data.binds })
         /*this.setState({ numero:res.data.number_policies})
          this.setState({ estado:res.data.state_policies })
          this.setState({ asegurado:res.data.name_insured })

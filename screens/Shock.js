@@ -3,11 +3,8 @@ import { View, Text, SafeAreaView, Image, Button, TextInput, TouchableOpacity, S
 import styles from './../Styles'
 import { Icon } from 'react-native-eva-icons';
 import axios from 'axios';
-
-
 import Header from '../components/header.js';
 import Footer from '../components/footer.js';
-
 import LottieView from 'lottie-react-native';
 import AsyncStorage from '@react-native-community/async-storage'
 
@@ -54,8 +51,6 @@ class Shock extends React.Component {
     var nplaca = ''
   }
 
-
-
   componentDidMount() {
     this._loadAssetAsync()
     this.getPolicies()
@@ -72,8 +67,6 @@ class Shock extends React.Component {
     });
     this.setState({ fontsLoaded: true })
   }
-
-
 
   getPolicies = () => {
     console.log('https://app.chseguros.com.co/api/policies/by/branch/' + this.state.branch + "/" + this.state.client_id)
@@ -110,7 +103,6 @@ class Shock extends React.Component {
         Alert.alert('Sin resultados', 'Este vehículo no se encuentra asegurado')
       })
   }
-
   MainView() {
     const { navigate } = this.props.navigation;
     return (
@@ -119,12 +111,7 @@ class Shock extends React.Component {
           barStyle="dark-content" />
         <View style={styles.container}>
           <View style={styles.headerWrapper}>
-
-          <Header foto={this.setState.foto} return="Siniestros" props={this.props} />
-            
-
-
-
+            <Header foto={this.setState.foto} return="Siniestros" props={this.props} />
             <View style={styles.greatingWrapperPolizas}>
               <Text style={styles.dayWrapper3}>Selecciona tu placa para continuar</Text>
             </View>
@@ -135,25 +122,9 @@ class Shock extends React.Component {
               </View>
             </View>
           </View>
-
-
-
           <TouchableOpacity onPress={() => { navigate('ReportSinister', { branch: "AUTOMOBIL", id_client: this.state.client_id }) }}>
-                 <Text></Text>
-                </TouchableOpacity>
-
-
-
-
-
-
-
-
-
-
-
-
-
+            <Text></Text>
+          </TouchableOpacity>
           <ScrollView style={styles.scrollView1}>
             {this.state.data.length > 0 &&
               this.state.data.map((item, key) => {
@@ -168,14 +139,11 @@ class Shock extends React.Component {
             }
           </ScrollView>
         </View>
-
         <Footer />
       </SafeAreaView>
     )
   }
-
   render() {
-
     return (
       <SafeAreaView style={{ flex: 1, backgroundColor: 'white' }}>
         { !this.state.fontsLoaded ? <Text>Cargando</Text> : this.MainView()}
@@ -183,5 +151,4 @@ class Shock extends React.Component {
     );
   }
 }
-
 export default Shock;

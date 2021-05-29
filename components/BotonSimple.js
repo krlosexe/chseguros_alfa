@@ -2,6 +2,9 @@ import React from 'react';
 import { View, Text, TouchableOpacity, Image, StyleSheet } from 'react-native';
 
 function BotonSimple(props) {
+
+
+
   return (
     <View style={{ borderWidth: 1, borderColor: '#0af0817d', width: '47%', borderRadius: 15, margin: 5, height: 60 }}>
       <TouchableOpacity onPress={() => { navigate('Shop') }}>

@@ -10,6 +10,7 @@ import { WebView } from 'react-native-webview';
 import AsyncStorage from '@react-native-community/async-storage'
 
 function Movilidad(props) {
+  console.log('screen accidente personal')
   const { navigation } = props
   const [Load, setLoad] = useState(false)
   const [foto, setfoto] = useState('')

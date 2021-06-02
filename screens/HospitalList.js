@@ -13,6 +13,7 @@ import _ from 'lodash';
 
 
 function HospitalesList(props) {
+  console.log('screen hospitales list')
   const { navigation } = props
   const [location, setlocation] = useState(null);
   const [Latitude, setLatitude] = useState(0);

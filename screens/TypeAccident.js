@@ -37,6 +37,7 @@ import AsyncStorage from '@react-native-community/async-storage'
 
 
 function Movilidad(props) {
+  console.log('screen tipo de accidente')
   const { navigation } = props
   const [getData, setgetData] = useState(null);
   const [dataToSend, setdataToSend] = useState(null);
@@ -61,7 +62,7 @@ function Movilidad(props) {
           "type_document_affiliate": 0,
           "document_affiliate": props.route.params.data.document_affiliate,
           "id_policie": props.route.params.data.id_policie,
-          "place": ""
+          "place": "jkjhkjh"
         }
       )
     }

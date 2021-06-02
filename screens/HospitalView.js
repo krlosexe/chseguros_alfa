@@ -10,21 +10,26 @@ import Footer from '../components/footer.js';
 import BotonDouble from '../components/BotonDouble.js';
 
 function HospitalesList(props) {
+  console.log('screen hospitales view')
   const [location, setlocation] = useState(null);
   const [Latitude, setLatitude] = useState(0);
   const [Longitude, setLongitude] = useState(0);
   const [HospilaesList, setHospilaesList] = useState([]);
   const [Filter, setFilter] = useState(1);
+  const [mensaje, setmensaje] = useState('**')
 
   let randomCode
   if (props.route.params) { randomCode = props.route.params.randomCode }
   else { randomCode = 1 }
 
 
+
+  console.log('get props: ', props.route.params.send)
   useEffect(() => {
+    console.log('effect randomCode');
     Geolocation.getCurrentPosition(info => setlocation(info));
     getHospitales();
-    sendData(props.route.params.send);
+   
   }, [randomCode]);
 
 
@@ -74,11 +79,25 @@ function HospitalesList(props) {
   }
 
 
+async function download(){
+  await axios.get(`https://app.chseguros.com.co/api/create/order/pdf`).then(function (response) {
+    setHospilaesList(response.data)
+  })
+    .catch(function (error) { console.log(error) })
+    .then(function () { });
+}
+  sendData(props.route.params.send);
+}
+
+
+
 
   function sendData(data) {
+    console.log('->', data)
     console.log("axios",data)
-    axios.post('https://app.chseguros.com.co/api/saveNewReporte', data).then(res => {
+    axios.post('https://app.chseguros.com.co/api/saveNewReporte',data).then(res => {
       console.log("?????????????????????????",res.data);
+      setmensaje(res.data);
     }).catch(error => {
       console.log("_______________________________________error", error)
     })
@@ -121,7 +140,7 @@ function HospitalesList(props) {
               <Text style={{ textAlign: "left", color: "#787878", fontSize: 10 }}>1 - Dirijase al centro</Text>
               <Text style={{ textAlign: "left", color: "#787878", fontSize: 10 }}>2 - Llevar el carnet y documento de la empresa</Text>
             </View>
-            <TouchableOpacity style={{ backgroundColor: "#5681FF", width: "100%", height: 36 }}>
+            <TouchableOpacity onPress={()=>download()} style={{ backgroundColor: "#5681FF", width: "100%", height: 36 }}>
               <Text style={{ lineHeight: 36, textAlign: "center", fontSize: 14, color: "#fff", fontWeight: "bold" }}>Descargar Orden</Text>
             </TouchableOpacity>
           </View>
